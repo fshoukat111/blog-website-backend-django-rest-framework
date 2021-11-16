@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'mptt',
     'corsheaders',
+    'tinymce',
+
 
     # created
     'blog_app'
