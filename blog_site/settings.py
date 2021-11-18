@@ -1,13 +1,9 @@
 from pathlib import Path
 import django_heroku
-
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-r%!ztcyi+6b!76t7w4ap&k^e#yxb&db9ktb5_o@p+3kt5q#zxz'
@@ -19,7 +15,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -27,12 +22,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # inrerternal purpose
     'rest_framework',
     'mptt',
     'corsheaders',
     'tinymce',
+    'cloudinary',
 
 
     # created
@@ -73,7 +69,6 @@ WSGI_APPLICATION = 'blog_site.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -134,6 +129,13 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:4200',
+)
+
+
+cloudinary.config(
+    cloud_name="dguivhovs",
+    api_key="474328411425361",
+    api_secret="UFvqdYlaq6xAVh37xo8Bipw-HEI"
 )
 
 # Activate Django-Heroku.
