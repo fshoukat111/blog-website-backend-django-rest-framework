@@ -119,10 +119,13 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2
 }
 CORS_ALLOW_CREDENTIALS = True
 
@@ -137,6 +140,8 @@ cloudinary.config(
     api_key="474328411425361",
     api_secret="UFvqdYlaq6xAVh37xo8Bipw-HEI"
 )
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
