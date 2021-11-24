@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'mptt',
     'corsheaders',
     'cloudinary',
-    'ckeditor',
 
 
     # created
