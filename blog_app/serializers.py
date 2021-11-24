@@ -7,11 +7,11 @@ from blog_app.models import *
 class CategoriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categories
-        fields = ('id', 'name','slug')
+        fields = ['id', 'name','slug']
 
 class PostsSerializer(serializers.ModelSerializer):
     category = CategoriesSerializer(read_only=True,many=True)
     
     class Meta:
         model = Posts
-        fields = ('id', 'title','slug','post_image', 'body_content', 'created','category')
+        fields = ['id', 'title','slug','post_image', 'body_content', 'created','category']

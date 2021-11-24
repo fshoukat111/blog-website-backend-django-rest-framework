@@ -27,8 +27,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'mptt',
     'corsheaders',
-    'tinymce',
     'cloudinary',
+    'ckeditor',
 
 
     # created
@@ -133,7 +133,6 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:4200',
 )
-
 
 cloudinary.config(
     cloud_name="dguivhovs",

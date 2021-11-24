@@ -1,6 +1,7 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from cloudinary.models import CloudinaryField
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -28,7 +29,7 @@ class Posts(models.Model):
         Categories, null=True, blank=True, related_name='posts')
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=200, blank=True, unique=True)
-    body_content = models.TextField(blank=True)
+    body_content = models.TextField()
     post_image = CloudinaryField('image', blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -36,6 +37,6 @@ class Posts(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['created']
+        ordering = ['-created']
         verbose_name = 'Posts'
         verbose_name_plural = 'Posts'
