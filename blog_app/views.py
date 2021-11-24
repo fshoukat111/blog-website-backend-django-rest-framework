@@ -15,7 +15,7 @@ class CategorysList(APIView):
     permission_classes = [permissions.AllowAny]
 
     def get(self, request):
-        category_list = Categories.objects.select_related("name").all()
+        category_list = Categories.objects.all()
         serializer = CategoriesSerializer(category_list, many=True)
         return Response(serializer.data)
 
