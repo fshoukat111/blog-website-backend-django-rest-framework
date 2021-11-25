@@ -9,9 +9,24 @@ class CategoriesSerializer(serializers.ModelSerializer):
         model = Categories
         fields = ['id', 'name','slug']
 
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comments
+        fields = [
+            "id",
+            "comment_posts",
+            "name",
+            "email",
+            "message_comment",
+            "created",
+        ]
+
+
 class PostsSerializer(serializers.ModelSerializer):
     category = CategoriesSerializer(read_only=True,many=True)
+    comments = CommentSerializer(read_only=True)
     
     class Meta:
         model = Posts
-        fields = ['id', 'title','slug','post_image', 'body_content', 'created','category']
+        fields = ['id', 'title','slug','post_image', 'body_content', 'created','category','comments']
+

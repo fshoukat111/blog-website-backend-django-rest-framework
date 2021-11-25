@@ -13,4 +13,5 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ("id", "title", "slug")
     prepopulated_fields = {"slug": ("title",)}
 admin.site.register(Posts, PostAdmin)
+admin.site.register(Comments)
 

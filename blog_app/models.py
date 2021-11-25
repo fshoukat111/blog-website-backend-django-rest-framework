@@ -39,3 +39,23 @@ class Posts(models.Model):
         ordering = ['-created']
         verbose_name = 'Posts'
         verbose_name_plural = 'Posts'
+    
+
+
+class Comments(models.Model):
+    comment_posts = models.ForeignKey(
+        Posts, null=True, blank=True, related_name='comment_posts',on_delete=models.CASCADE,)
+    name = models.CharField(max_length=150)
+    email = models.EmailField(max_length=200, blank=True, unique=True)
+    message_comment = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        ordering = ['-created']
+        verbose_name = 'Comments'
+        verbose_name_plural = 'Comments'
+
+
