@@ -8,7 +8,6 @@ from apps.blog_comment.serializers import *
 
 # Create your views here.
 class CreateComments(APIView):
-    serializer_class = CommentSerializer
 
     def post(self, request, post_slug, *args, **kwargs):
         post = get_object_or_404(Posts, slug=post_slug)
@@ -20,11 +19,10 @@ class CreateComments(APIView):
             return Response({"errors": serializer.errors}, status=400)
 
 class CommentsList(APIView):
-    serializer_class = CommentSerializer
 
     def get(self, request,post_slug):
         post_list = get_object_or_404(Posts, slug=post_slug)
-        comment_of_posts = Comments.objects.filter(comments_on_post=post_list)
-        serializer = CommentSerializer(comment_of_posts,many=True)
+        comment_on_posts = Comments.objects.filter(comments_on_post=post_list)
+        serializer = CommentSerializer(comment_on_posts,many=True)
         return Response(serializer.data)
 
