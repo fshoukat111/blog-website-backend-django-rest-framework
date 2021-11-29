@@ -133,7 +133,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:4200',
-    'https://fshoukat-blog.netlify.app/home'
+    'https://fshoukat-blog.netlify.app'
 )
 
 cloudinary.config(
