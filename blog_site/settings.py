@@ -31,8 +31,9 @@ INSTALLED_APPS = [
 
 
     # created
-    'apps.blog_post',
-    'apps.blog_comment'
+    'apps.blog_categories',
+    'apps.blog_articles',
+    'apps.blog_article_comments'
 ]
 
 MIDDLEWARE = [
