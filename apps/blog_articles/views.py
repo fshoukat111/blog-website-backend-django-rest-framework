@@ -16,10 +16,10 @@ class ArticlesListView(APIView):
     def get(self, request, category_slug):
         category = get_object_or_404(Categories, slug=category_slug)
         articles_list = Articles.objects.filter(category=category)
-        # paginator = PageNumberPagination()
-        # pages_of_posts = paginator.paginate_queryset(
-        #     posts_list, request, view=self)
-        serializer = ArticlesSerializer(articles_list, many=True)
+        paginator = PageNumberPagination()
+        page_article_list = paginator.paginate_queryset(
+            articles_list, request, view=self)
+        serializer = ArticlesSerializer(page_article_list, many=True)
         return Response(serializer.data)
 
 #Get Single Article Detail
