@@ -8,19 +8,20 @@ from rest_framework.pagination import PageNumberPagination
 from apps.blog_articles.models import *
 from apps.blog_categories.models import *
 from apps.blog_articles.serializers import *
+from apps.blog_articles.pagination import CustomPagination
 
 
 # Create your views here.
-class ArticlesListView(APIView):
-
+class ArticlesListView(APIView,CustomPagination):
     def get(self, request, category_slug):
         category = get_object_or_404(Categories, slug=category_slug)
         articles_list = Articles.objects.filter(category=category)
-        paginator = PageNumberPagination()
-        page_article_list = paginator.paginate_queryset(
+        page_article_list = self.paginate_queryset(
             articles_list, request, view=self)
         serializer = ArticlesSerializer(page_article_list, many=True)
-        return Response(serializer.data)
+        return self.get_paginated_response(serializer.data)
+
+    
 
 #Get Single Article Detail
 class ArticleDetailView(APIView):
